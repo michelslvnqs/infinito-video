@@ -79,6 +79,8 @@ def download_youtube_video(youtube_id, output_dir="downloads", subtitle_lang=Non
     return video_path, title, subtitle_path
 
 if __name__ == "__main__":
+    if hasattr(sys.stdout, 'reconfigure'):
+        sys.stdout.reconfigure(encoding='utf-8', errors='replace')
     parser = argparse.ArgumentParser(description="Baixar vídeo do YouTube diretamente pelo terminal.")
     parser.add_argument("url", help="URL do vídeo ou ID do YouTube")
     parser.add_argument("--dir", default="downloads", help="Diretório de destino (padrão: downloads)")
