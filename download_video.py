@@ -39,6 +39,7 @@ def download_youtube_video(youtube_id, output_dir="downloads", subtitle_lang=Non
         'outtmpl': output_template,
         'quiet': False,
         'no_warnings': True,
+        'merge_output_format': 'mp4',
     }
     
     if subtitle_lang:
