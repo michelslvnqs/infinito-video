@@ -29,7 +29,9 @@ def download_youtube_video(youtube_id, output_dir="downloads", subtitle_lang=Non
     print(f"[{clean_id}] Verificando/Baixando arquivo...")
     output_template = os.path.join(output_dir, f"{clean_id}.%(ext)s")
     
-    if quality in ("best", "1080p"):
+    if quality == "best":
+        fmt = "bestvideo+bestaudio/best"
+    elif quality == "1080p":
         fmt = "bestvideo[height<=1080]+bestaudio/best[height<=1080]/best"
     else:
         fmt = "best[height<=360]"
@@ -41,6 +43,9 @@ def download_youtube_video(youtube_id, output_dir="downloads", subtitle_lang=Non
         'no_warnings': True,
         'merge_output_format': 'mp4',
     }
+    
+    if os.path.exists(r"C:\Program Files\nodejs\node.exe"):
+        ydl_opts['js_runtimes'] = {'node': {'path': r'C:\Program Files\nodejs\node.exe'}}
     
     if subtitle_lang:
         ydl_opts['writesubtitles'] = True
